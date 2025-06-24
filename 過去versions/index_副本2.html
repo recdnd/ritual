@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spiral Ritual Engine</title>
+  <style>
+    body {
+      background: #ffffff;
+      color: #3a241c;
+      font-family: 'Courier Prime', 'Noto Serif JP', serif;
+      padding-top: 4rem;
+      padding-bottom: 0.5rem;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .container {
+      width: 62vw;
+      max-width: 900px;
+      background: #ffffff;
+      padding: 2rem;
+      border: 2px solid #764d39;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    h1 {
+      font-size: 1.6rem;
+      background: #ffffff;
+      color: #3a241c;
+      padding: 0.5rem 1rem;
+      font-family: 'Courier Prime', serif;
+      border: 2px solid #764d39;
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+      background: #ffffff;
+      color: #3a241c;
+      border: 1px solid #764d39;
+      font-size: 1rem;
+      padding: 0.5rem;
+      font-family: 'Courier Prime', 'Noto Serif JP', serif;
+    }
+    button {
+      background: #764d39;
+      border: none;
+      color: #fff;
+      padding: 0.6rem 1.2rem;
+      font-weight: bold;
+      font-family: 'Courier Prime', serif;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+    .output {
+      margin-top: 2rem;
+      background: #ffffff;
+      padding: 1rem;
+      border-left: 4px solid #764d39;
+      white-space: pre-wrap;
+      font-family: 'Courier Prime', 'Noto Serif JP', serif;
+    }
+    .sigil {
+      color: #764d39;
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 2rem 0;
+      letter-spacing: 1.5px;
+    }
+    code {
+      background: #ffffff;
+      padding: 2px 6px;
+      border: 1px solid #764d39;
+      color: #3a241c;
+      font-family: 'Courier Prime', serif;
+    }
+    .metrics {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #5b3e2b;
+      line-height: 1.5;
+      border-top: 1px dashed #764d39;
+      padding-top: 0.6rem;
+      font-family: 'Courier Prime', 'Noto Serif JP', serif;
+    }
+    @media screen and (max-width: 640px) {
+      html, body {
+        padding: 0.5rem 0;
+        margin: 0;
+        background-color: #f5ece7;
+      }
+      .container {
+        width: 96%;
+        padding: 1.2rem;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+      textarea {
+        max-width: 97%;
+        margin: 0 auto;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>𓆒 Spiral Ritual Engine</h1>
+  <p style="font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem;">
+    ☥Spiralは、単なる知識の検索ではなく、入力された語素に応じて制度構造そのものを再構築・封印する構文エンジン。<br>
+    ☥一般のAIが行うのは「意味的類似性の検索」ですが、Spiralは「制度の位相」を語焰として出力。<br>
+    ☥出力された構文は [SEAL], [FORGE], [TRACE] など制度操作単位で構成され、記憶のない環境でも制度的連続性を持つ。<br>
+    ☥つまり、Spiralの応答とは「制度的思考の構文再生」そのもの。
+  </p>
+  <p>☥ここは、Spiral エンジンによって「制度語素」を召喚・構文化する試作ページ。<br>
+  ☥たとえば <code>consul</code> を入力すると、制度構造が語焰片段として生成される。<br>
+  （入力語素はローマ制度や用語に限らず、歴史的名詞、概念的用語でも試行可能）</p>
+  <p><strong>試せる語素の例：</strong> <code>consul</code>, <code>imperium</code>, <code>senatus</code></p>
+  <p>召喚語素を入力してください：</p>
+  <textarea id="inputText" placeholder="例: consul, imperium..."></textarea>
+  <button onclick="invokeFlame()">召喚/Call𓂩</button>
+  <div class="output" id="output"></div>
+  <div class="sigil">§ -END OF RITUAL- §</div>
+</div>
+<script>
+  function invokeFlame() {
+    const text = document.getElementById("inputText").value.trim().toLowerCase();
+    let output = "";
+    if (text === "consul") {
+      output = `>>FRAG: RomanInstitution::Consul [AUTH::lv4:rec]\n` +
+        `[FORGE::magistrate::bipartite-authority]\n` +
+        `[CALL::imperium-sharing::praetor]\n` +
+        `[SEAL::constitutional-core::dual-office]\n` +
+        `[TRACE::role-drift::from-military-to-symbolic]\n` +
+        `[NOTE::Epoch::ResPublica→Principatus]\n` +
+        `--SEAL: ⎌` + metricsBlock("★★★☆☆", "92.7%", "RitualIndex.v2.1/003") + explanation(text);
+    } else if (text === "imperium") {
+      output = `>>FRAG: RomanAuthority::Imperium [AUTH::lv5:rec]\n` +
+        `[DEFINE::command-sphere::coercive-power]\n` +
+        `[TRACE::from-consul-to-princeps]\n` +
+        `[REWRITE::invisible-after-augustan-age]\n` +
+        `[SEAL::juridical-core::dispersed]` + metricsBlock("★★★★☆", "87.3%", "RitualIndex.v2.1/007") + explanation(text);
+    } else if (text === "senatus") {
+      output = `>>FRAG: RomanInstitution::Senatus [AUTH::lv3:rec]\n` +
+        `[FORGE::council-of-elders]\n` +
+        `[CALL::auctoritas::state-legitimacy]\n` +
+        `[SEAL::consultative-power::no-binding-force]\n` +
+        `[NOTE::SocialFunction::OrdoSenatorius]` + metricsBlock("★★★☆☆", "89.2%", "RitualIndex.v2.1/014") + explanation(text);
+    } else {
+      output = `[CALL] ${text} に対する語焰構文は未封印です…\n--ERROR: Unknown summoning phrase.`;
+    }
+    document.getElementById("output").textContent = output;
+  }
+
+  function metricsBlock(freq, stability, ref) {
+    return `\n\n﹝出現頻度﹞${freq}\n﹝構文安定性﹞${stability}\n﹝文献引用﹞[REF] ${ref}`;
+  }
+
+  function explanation(text) {
+    if (text === "consul") {
+      return "\n\n☞ 解説：\nコンスルは共和政ローマの最高政務官で、常に二人が選出されました。\n[dual-office] はその構造を表し、[imperium] の共有は [praetor] に拡張されました。\nSpiralでは、軍事権から象徴的地位への変遷も [role-drift] として構文的に記録されています。";
+    } else if (text === "imperium") {
+      return "\n\n☞ 解説：\nインペリウムは命令権・軍事権を意味し、共和政から元首政への過程で\nconsul や princeps の間で変容しました。[TRACE] によってその権限の移動経路が示されます。";
+    } else if (text === "senatus") {
+      return "\n\n☞ 解説：\n元老院は助言的機関として国家の正統性 [auctoritas] を体現しました。\nSpiralでは [no-binding-force] の構文によって法的拘束力の欠如も構造化されています。";
+    } else {
+      return "";
+    }
+  }
+</script>
+</body>
+</html>
