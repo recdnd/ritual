@@ -2,13 +2,15 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spiral Ritual Engine</title>
   <style>
     body {
       background: #ffffff;
       color: #3a241c;
       font-family: 'Courier Prime', 'Noto Serif JP', serif;
-      display: flex;
+		  padding-top: 4rem;   /* 頂部空間 */
+		  padding-bottom: 0.5rem; /* 底部空間 */
       justify-content: center;
       align-items: center;
       min-height: 100vh;
@@ -20,8 +22,8 @@
 		  background: #ffffff;
 		  padding: 2rem;
 		  border: 2px solid #764d39;
-		  margin-top: 2rem;   /* 👈 頂部 padding */
-		  margin-bottom: 2rem; /* 👈 底部 padding */
+		  margin-left: auto;
+		  margin-right: auto;
 		}
 
     h1 {
@@ -75,6 +77,25 @@
       color: #3a241c;
       font-family: 'Courier Prime', serif;
     }
+@media screen and (max-width: 640px) {
+  html, body {
+    padding: 0.5rem 0;
+    margin: 0;
+    background-color: #f5ece7;
+  }
+  .container {
+    width: 96%;
+    padding: 1.2rem;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  textarea {
+  max-width: 97%;
+  margin: 0 auto;
+  display: block;
+}
+}
+
   </style>
 </head>
 <body>
